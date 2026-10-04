@@ -8,26 +8,26 @@
   "prHourlyLimit": 0,
   "packageRules": [
     {
-      "description": "One grouped PR for all minor/patch/digest updates; automerged when every check passes",
+      "description": ["One grouped PR for all minor/patch/digest updates; automerged when every check passes"],
       "matchUpdateTypes": ["minor", "patch", "digest", "pin", "pinDigest"],
       "groupName": "non-major dependencies",
       "groupSlug": "non-major",
       "automerge": true
     },
     {
-      "description": "0.x minors can break: never automerge them",
+      "description": ["0.x minors can break: never automerge them"],
       "matchCurrentVersion": "/^v?0\\./",
       "matchUpdateTypes": ["minor"],
       "automerge": false
     },
     {
-      "description": "vite, its plugins and vitest have to move together",
+      "description": ["vite, its plugins and vitest have to move together"],
       "matchPackageNames": ["vite", "vitest", "@vitest/**", "@vitejs/**", "vite-plugin-*"],
       "matchUpdateTypes": ["major"],
       "groupName": "vite ecosystem (major)"
     },
     {
-      "description": "openai pins its zod peer range, so bump them together",
+      "description": ["openai pins its zod peer range, so bump them together"],
       "matchPackageNames": ["openai", "zod"],
       "matchUpdateTypes": ["major"],
       "groupName": "openai + zod (major)"
