@@ -23,6 +23,21 @@
       "automerge": false
     },
     {
+      "description": [
+        "Python minor/major: the Docker python base image and actions/setup-python's python-version move together in ONE PR, and only after a human approves it on the Dependency Dashboard.",
+        "A new Python minor ships months before its ecosystem wheels (pydantic-core etc.), and hash-locked requirements compiled for the old minor fail to install on it.",
+        "Not minimumReleaseAge: Docker Hub's release timestamp is the tag's tag_last_pushed, so the floating python:3.N-alpine tag re-ages on every rebuild and would be held forever while the setup-python side cleared, splitting the pair again.",
+        "Patch and digest bumps of the pinned base stay in the non-major group."
+      ],
+      "matchDepNames": ["python"],
+      "matchDatasources": ["docker", "github-releases"],
+      "matchUpdateTypes": ["major", "minor"],
+      "groupName": "python",
+      "groupSlug": "python",
+      "automerge": false,
+      "dependencyDashboardApproval": true
+    },
+    {
       "description": ["vite, its plugins and vitest have to move together"],
       "matchPackageNames": ["vite", "vitest", "@vitest/**", "@vitejs/**", "vite-plugin-*"],
       "matchUpdateTypes": ["major"],
